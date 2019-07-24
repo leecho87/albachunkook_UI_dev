@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>알바천국 - 웹표준가이드</title>
+<link rel="stylesheet" type="text/css" href="rsc/css/main.css">
+<script type="text/javascript" src="/standard/webguide/guide/2019/rsc/js/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.webguide__header').load('/standard/webguide/guide/2019/rsc/inc/header.html');
+	//$('.webguide__signature-wrap').load('/standard/webguide/guide/2019/rsc/inc/footer.html');
+});
+</script>
+</head>
+<body id="Webguide">
+	<header class="webguide__header"></header>
+	<article class="webguide__contents">
+		<h1 class="hidden">콘텐츠</h1>
+		<section class="webguide__contents-inner">
+			<h1 class="hidden">웹표준가이드 HTML 규칙</h1>
+			<div class="webguide__box">
+				<dl>
+					<dt>1. 기본규칙</dt>
+					<dd>
+						<ul>
+							<li>HTML은 W3C에서 권고하는 표준안을 준수함을 기본으로 자유롭게 설계한다. 예외적으로 개발 요소와 상충되는 상황이 발생할 경우, 마크업 수정이 가능하도록, 확장성과 안전성을 기초로 설계하도록 한다. 작성된 마크업 설계 문서는 W3C Validator를 통과하여야 하며, <em>DTD를 제외</em>하고는, <em>모두 소문자로 작성</em>하여야 한다.</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+
+			<div class="webguide__box">
+				<dl>
+					<dt>2. 문서규칙</dt>
+					<dd>
+						<ul>
+							<li>알바천국은 xhtml 1.0 transtion 과 html5를 혼용하여 사용하고 있으며, 사이트의 표준작업에 있어 transition을 사용하고 있다. 따라서 마크업의 닫음 요소의 확인이 꼭 필용하고, 인코딩 설정의 경우 <em>PC웹은 euc-kr, ANSI</em>를 <em>Mobile은 utf-8</em>을 사용중이며, 문서타입설정의 경우 항상 문서 최상단에 위치하여야 한다.</li>							
+							<li>
+								<a href="#" class="banner-view-button" onclick="$('.edit-banner').hide();$(this).next('.edit-banner').show();return false;">피씨 - XHTML1.0 표기법 확인하기</a>
+
+								<div class="edit-banner">
+									<p class="edit-banner__paragraph">&lt;DOCTYPE HTML PUBLIC "-//W3C/DTD XHTML 1.0 Transition//EN" "http://w3.org/TR/xhtml1/DTD/xhtml1-transition.dtd"&gt;</p>
+									<p class="edit-banner__detail">
+										<span class="edit-banner__detail-inner">Do you want to close the layer?</span>
+										<a href="#" class="banner-close-button" onclick="$(this).parents('.edit-banner').fadeOut(1200);return false;">[Y]es, I agree</a>
+									</p>
+								</div>
+							</li>
+							<li>
+								<a href="#" class="banner-view-button" onclick="$('.edit-banner').hide();$(this).next('.edit-banner').show();return false;">모바일 - HTML5 표기법 확인하기</a>
+
+								<div class="edit-banner">
+									<p class="edit-banner__paragraph">&lt;!DOCTYPE HTML&gt;</p>
+									<p class="edit-banner__detail">
+										<span class="edit-banner__detail-inner">Do you want to close the layer?</span>
+										<a href="#" class="banner-close-button" onclick="$(this).parents('.edit-banner').fadeOut(1200);return false;">[Y]es, I agree</a>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+
+			<div class="webguide__box">
+				<dl>
+					<dt>3. 전역화구조규칙</dt>
+					<dd>
+						<ul>
+							<li>메타태그,타이틀 등 문서의 head영역은 요소와 html의 문서 설정 등 문서 전체를 구조화 하는 영역이다. head안의 각각의 작성순서는 doctype -> html -> head -> meta -> title -> link -> script 순으로 작성하며, 문서 내에서만 내부적으로 스타일을 선언할 경우 link와 script 사이에 위치하도록 하며 <em>(스타일이 script보다 상단에 위치하도록 작성)</em> 아래의 예제를 바탕으로 설계하도록 한다.</li>
+							<li>
+								<a href="#" class="banner-view-button" onclick="$('.edit-banner').hide();$(this).next('.edit-banner').show();return false;">전역화구조규칙 예제 확인하기</a>
+
+								<div class="edit-banner">
+									<p class="edit-banner__paragraph">
+										&lt;DOCTYPE HTML PUBLIC "-//W3C/DTD XHTML 1.0 Transition//EN" "http://w3.org/TR/xhtml1/DTD/xhtml1-transition.dtd"&gt;<br />
+										&lt;HTML xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko"&gt;<br />
+										&lt;head&gt;<br />
+										&lt;meta http-equiv="content-type" content="text/html; charset=euc-kr"&gt;<br />
+										&lt;title&gt;새 알바문화를 켜다 - 알바천국&lt;/title&gt;<br />
+										&lt;link type="text/css" rel="stylesheet" src="/css/main.css" /&gt;<br />
+										&lt;style&gt;<br />
+										#Header {background-color:skyblue}<br />
+										&lt;/style&gt;<br />
+										&lt;script type="text/javascript" src="http://code.jquery.com/jquery-1.11.min.js"&gt;<br />
+										&lt;/head&gt;
+									</p>
+									<p class="edit-banner__detail">
+										<span class="edit-banner__detail-inner">Do you want to close the layer?</span>
+										<a href="#" class="banner-close-button" onclick="$(this).parents('.edit-banner').fadeOut(1200);return false;">[Y]es, I agree</a>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</section>
+
+		<!--footer class="webguide__signature-wrap"></footer-->
+	</article>
+</body>
+</html>

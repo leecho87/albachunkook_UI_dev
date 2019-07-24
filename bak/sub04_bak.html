@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta chasret="utf-8" />
+<!--meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" /-->
+<title>알바천국 - 웹표준가이드</title>
+<link rel="stylesheet" type="text/css" href="/standard/webguide/guide/rsc/css/standard.css" />
+</head>
+
+<body id="Accessibility">
+<header>
+	<div id="Header">
+		<div class="header-intro"><img src="/standard/webguide/guide/images/mini_bi.png" alt="" />웹표준가이드 - <span class="location">접근성 관련 규칙</span></div>
+		<div class="header-inner">
+			<h1 class="header-inner-h1">Web Coding Guideline</h1>
+			<nav class="header-inner-menu">
+				<ul class="header-inner-menuList">
+					<li><a href="/standard/webguide/guide/index.html">개요</a></li>
+					<li><a href="/standard/webguide/guide/sub01.html">명명규칙</a></li>
+					<li><a href="/standard/webguide/guide/sub02.html">HTML 규칙</a></li>
+					<li><a href="/standard/webguide/guide/sub03.html">CSS 규칙</a></li>
+					<li><a href="/standard/webguide/guide/sub04.html" class="on">접근성 관련 규칙</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
+
+<section id="Section">
+	<div id="CssRuleArea">
+		<!-- 접근성이란? -->
+		<article class="guide-contentBox accessibility-base">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">1</span>
+			</div>
+			<h1 class="guide-content-h1">접근성이란?</h1>
+			<p>월드 와이드 웹(World Wide Web)을 창시한 <strong>팀 버너스 리</strong>는 웹이란 <strong>'장애에 구애 없이 모든 사람들이 손쉽게 정보를 공유할 수 있는 공간이고, 필수적인 요소'</strong>라고 정의하며 시작되었다.</p>
+		</article>
+		<!-- //접근성이란? -->
+
+		<!-- 대체텍스트 -->
+		<article class="guide-contentBox accessibility-imgText">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">2</span>
+			</div>
+			<h1 class="guide-content-h1">대체텍스트</h1>
+			<p>이미지를 볼 수 없는 시각장애인을 위하여, 이미지에 보여지는 정보를 똑같이 제공하여준다.</p>
+			<p class="exercise">
+				<img src="http://image.alba.kr/topMain/head_BI.gif" alt="" /><br />
+				&lt;img src="http://image.alba.kr/topMain/head_BI.gif" alt="" /&gt; (X)<br />
+				&lt;img src="http://image.alba.kr/topMain/head_BI.gif" alt="알바천국" /&gt; (O)
+				<span class="guideBalloon">이미지에 나와있는 대체텍스트를 alt값에 명시해주어 어떠한 이미지인지 알 수 있도록 한다.</span>
+			</p>
+		</article>
+		<!-- //대체텍스트 -->
+
+		<!-- 동영상 자막 제공 -->
+		<article class="guide-contentBox accessibility-video">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">3</span>
+			</div>
+			<h1 class="guide-content-h1">동영상 자막 제공</h1>
+			<p>소리를 들을 수 없는 청각장애인을 위하여 동영상에 자막을 제공한다.</p>
+		</article>
+		<!-- //동영상 자막 제공 -->
+
+		<!-- 논리적 입력요소 -->
+		<article class="guide-contentBox accessibility-form">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">4</span>
+			</div>
+			<h1 class="guide-content-h1">논리적 입력요소</h1>
+			<p>정보를 입력하는 폼 요소일 시, 사용자가 어떠한것에 대한 입력란인지 정보를 제공한다.</p>
+			<p class="exercise">
+				&lt;input type="text" /&gt; &lt;label&gt;제목&lt;/label&gt; (X) <br />
+				&lt;input type="text" <strong>id="write_title"</strong> /&gt; &lt;label <strong>for="write_title"</strong>&gt;제목&lt;/label&gt; (O)
+				<span class="guideBalloon">input과 label의 id, for 값을 동일한 이름으로 연결하여 어떠한 입력란인지 정보를 제공한다.<br />단, label이 있을 수 없는 경우 title값으로 대체한다.</span>
+			</p>
+		</article>
+		<!-- //논리적 입력요소 -->
+
+		<!-- 건너뛰기 제공 -->
+		<article class="guide-contentBox accessibility-skip">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">5</span>
+			</div>
+			<h1 class="guide-content-h1">건너뛰기</h1>
+			<p>웹페이지는 mark-up의 순서대로 최상단부터 최하단까지 순차적으로 내려오며 정보를 전달한다. 시각장애인의 경우, 스크린리더기가 웹페이지를 읽어주는데, 이 리더기 역시 최상단에서 최하단으로 순차적으로 읽으며 내려오기때문에, 시각장애인은 반복적인 요소들을 계속 들을 수 밖에 없다. 그리하여, 각각의 단락들을 건너뛸 수 있는 건너뛰는 기능을 제공하여 준다.</p>
+		</article>
+		<!-- //건너뛰기 제공 -->
+
+		<!-- 표 작성 -->
+		<article class="guide-contentBox accessibility-base">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">6</span>
+			</div>
+			<h1 class="guide-content-h1">표(table)작성</h1>
+			<p>표의 제목과 설명, 해당 셀은 제목인지 설명인지, 열에 해당하는 제목인지, 행에 해당하는 정보인지를 제공하여준다.</p>
+			<p class="exercise">
+				&lt;table <strong>summary="접근성 설명에 대한 항목, 내용에 대한 표입니다."</strong>&gt;<br />
+				&lt;caption <strong>summary="접근성 설명 표"</strong>&gt;&lt;/caption&gt;<br />
+				&lt;th <strong>scope="col"</strong>&gt;<br />
+				&lt;th <strong>scope="row"</strong>&gt;<br />
+				&lt;td <strong>scope="col"</strong>&gt;<br />
+				&lt;td <strong>scope="row"</strong>&gt;
+				<span class="guideBalloon">아래의 표와 같이 표의 제목과 설명에 해당하는 summary caption<br />행에 대한 제목인지, 열에 대한 제목인지를 표시하여주는 scope등을 표시하여준다 </span>
+			</p>
+		</article>
+		<!-- //표 작성 -->
+
+		<!-- 저시력자 배려 -->
+		<article class="guide-contentBox accessibility-design">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">7</span>
+			</div>
+			<h1 class="guide-content-h1">저시력자 배려</h1>
+			<p>꼭 안보여야지만 시각장애가 아니다, 시력이 매우 낮은 저시력자와 색맹인 사용자들은 색깔에도 불편함을 겪는다. 이들을 위하여 명도대비를 지켜 정확한 정보를 보여주어야 한다. 보조도구를 이용하여 명도대비를 체크하고, 디자이너와 협의 후 명도대비를 준수 한 디자인을 사용하여야 한다</p>
+		</article>
+		<!-- //저시력자 배려 -->
+
+		<!-- 키보드접근 -->
+		<article class="guide-contentBox accessibility-keyboard">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">8</span>
+			</div>
+			<h1 class="guide-content-h1">키보드 접근</h1>
+			<p>신체가 불편한 대부분의 이용자들은 다양한 보조기기를 활용하여 웹을 이용한다. 보조기기를 이용하지만 키보드의 tab, shift+tab, enter 키를 활용하여 다음으로 이동,이전으로 이동,확인 등의 키보드 사용으로 즐기기때문에, 웹사이트를 탐색할 때 키보드만으로도 충분한 운용이 가능하도록 설계하여야 한다.</p>
+		</article>
+		<!-- //키보드접근 -->
+	</div>
+</section>
+
+<footer id="Footer">
+	<p>알바천국 웹표준파트 UI개발 가이드 &copy; 2016</p>
+</footer>
+
+</body>
+</html>

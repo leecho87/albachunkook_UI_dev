@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta chasret="euc-kr" />
+<!--meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" /-->
+<title>알바천국 - 웹표준가이드</title>
+<link rel="stylesheet" type="text/css" href="./rsc/css/standard.css" />
+</head>
+
+<body id="HtmlRule">
+<header>
+	<div id="Header">
+		<div class="header-intro"><img src="./images/mini_bi.png" alt="" />웹표준가이드 - <span class="location">HTML 규칙</span></div>
+		<div class="header-inner">
+			<h1 class="header-inner-h1">Web Coding Guideline</h1>
+			<nav class="header-inner-menu">
+				<ul class="header-inner-menuList">
+					<li><a href="./index.html">개요</a></li>
+					<li><a href="./rules.html">명명규칙</a></li>
+					<li><a href="./html.html" class="on">HTML 규칙</a></li>
+					<li><a href="./css.html">CSS 규칙</a></li>
+					<!-- <li><a href="./scss.html">SASS 규칙</a></li> -->
+					<li><a href="./accessibility.html">접근성 관련 규칙</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
+
+<section id="Section">
+	<div id="HtmlRuleArea">
+		<!-- 기본규칙 -->
+		<article class="guide-contentBox htmlRule-base">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">1</span>
+			</div>
+			<h1 class="guide-content-h1">기본규칙</h1>
+			<p>HTML은 W3C에서 권고하는 표준안을 준수함을 기본으로 자유롭게 설계한다. 예외적으로 개발 요소와 상충되는 상황이 발생할 경우, 마크업 수정이 가능하도록, 확장성과 안전성을 기초로 설계하도록 한다. 작성된 마크업 설계 문서는 W3C Validator를 통과하여야 하며, <strong>DTD를 제외</strong>하고는, <strong>모두 소문자로 작성</strong>하여야 한다.</p>
+		</article>
+		<!-- //기본규칙 -->
+
+		<!-- 문서규칙 -->
+		<article class="guide-contentBox htmlRule-type">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">2</span>
+			</div>
+			<h1 class="guide-content-h1">문서규칙</h1>
+			<p>알바천국은 xhtml 1.0 transtion 과 html5를 혼용하여 사용하고 있으며, 사이트의 표준작업에 있어 transition을 사용하고 있다. 따라서 마크업의 닫음 요소의 확인이 꼭 필용하고, 인코딩 설정의 경우 <strong>PC웹은 euc-kr,ANSI</strong>를 <strong>Mobile은 utf-8</strong>을 사용중이며, 문서타입설정의 경우 항상 문서 최상단에 위치하여야 한다.</p>
+			<p class="exercise">PC : &lt;DOCTYPE HTML PUBLIC "-//W3C/DTD XHTML 1.0 Transition//EN" "http://w3.org/TR/xhtml1/DTD/xhtml1-transition.dtd"&gt; <span class="guideBalloon">XHTML1.0 표기법</span></p>
+			<p class="exercise">MO : &lt;!DOCTYPE HTML&gt; <span class="guideBalloon">HTML5 표기법</span></p>
+		</article>
+		<!-- //문서규칙 -->
+
+		<!-- 전역화구조규칙 -->
+		<article class="guide-contentBox htmlRule-type">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">3</span>
+			</div>
+			<h1 class="guide-content-h1">전역화구조규칙</h1>
+			<p>메타태그,타이틀 등 문서의 head영역은 요소와 html의 문서 설정 등 문서 전체를 구조화 하는 영역이다. head안의 각각의 작성순서는 doctype -> html -> head -> meta -> title -> link -> script 순으로 작성하며, 문서 내에서만 내부적으로 스타일을 선언할 경우 link와 script 사이에 위치하도록 하며 <span class="danger">(스타일이 script보다 상단에 위치하도록 작성)</span> 아래의 예제를 바탕으로 설계하도록 한다.</p>
+			<p class="exercise">
+				&lt;DOCTYPE HTML PUBLIC "-//W3C/DTD XHTML 1.0 Transition//EN" "http://w3.org/TR/xhtml1/DTD/xhtml1-transition.dtd"&gt;<br />
+				&lt;HTML xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko"&gt;<br />
+				&lt;head&gt;<br />
+				&lt;meta http-equiv="content-type" content="text/html; charset=euc-kr"&gt;<br />
+				&lt;title&gt;새 알바문화를 켜다 - 알바천국&lt;/title&gt;<br />
+				&lt;link type="text/css" rel="stylesheet" src="/css/main.css" /&gt;<br />
+				&lt;style&gt;<br />
+				#Header {background-color:skyblue}<br />
+				&lt;/style&gt;<br />
+				&lt;script type="text/javascript" src="http://code.jquery.com/jquery-1.11.min.js"&gt;
+			</p>
+		</article>
+		<!-- //전역화구조규칙 -->
+
+		<!-- 명확한 태그 작성 -->
+		<article class="guide-contentBox htmlRule-type">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">4</span>
+			</div>
+			<h1 class="guide-content-h1">명확한 태그 작성</h1>
+			<p>태그의 열고 닫기, 태그의 위치들을 자세히 확인하여야 한다.</p>
+			<p class="exercise">
+				&lt;p&gt;작성하기&lt;p&gt; (X) &nbsp;&nbsp;===>&nbsp;&nbsp; &lt;p&gt;작성하기&lt;/p&gt; (O) <br />
+				&lt;p&gt;&lt;span&gt;&lt;/p&gt;&lt;/span&gt; (X) &nbsp;&nbsp;===>&nbsp;&nbsp; &lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt; (O)
+				<span class="guideBalloon">태그의 열고닫음, 태그의 위치를 확인 후 올바르게 작성한다.</span>
+			</p>
+		</article>
+		<!-- //명확한 태그 작성 -->
+
+		<!-- form 구조규칙 -->
+		<article class="guide-contentBox htmlRule-type">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">5</span>
+			</div>
+			<h1 class="guide-content-h1">form 구조규칙</h1>
+			<p>form태그에는 제목을 설명하는 legend를 명시하여 사용자가 입력하는 form이 어떠한 입력값인지 정보를 미리 전달하여 준다</p>
+			<p class="exercise">
+				&lt;form&gt;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;fieldset&gt;<br />
+				<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;legend&gt;회원가입 사용자 기본정보&lt;/legend&gt;<br /></strong>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/fieldset&gt;<br />
+				&lt;/form&gt;
+			</p>
+			<p>input의 요소들과 label값을 1:1 매칭을 하여 선택/체크 유무의 명확한 값이 어떠한 것인지를 제공하여야 한다.<br><span class="danger">(1:1 매칭값이 있으면 1:1매칭이 우선, 부득이하게 없다면 title을 제공)</span></p>
+			<p class="exercise">
+				&lt;input type="text" id="<strong>user_id</strong>" /&gt;<br />
+				&lt;label for="<strong>user_id</strong>"&gt;아이디&lt;/label&gt;<br />
+				<span class="guideBalloon">label의 for, input의 id를 1:1매칭하여 명확한 정보 제공</span>
+			</p>
+			<p>label안에 input요소를 속하게 함으로써 정보제공도 가능하다 1:1매칭을 시키는 것을 추천</p>
+			<p class="exercise">
+				&lt;label for="<strong>user_id</strong>"&gt;&lt;input type="text" id="<strong>user_id</strong>" /&gt;아이디&lt;/label&gt;<br />
+				<span class="guideBalloon">label의 자식요소로 input요소를 제공</span>
+			</p>
+		</article>
+		<!-- //form 구조규칙 -->
+
+		<!-- 주석규칙 -->
+		<article class="guide-contentBox htmlRule-type">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">6</span>
+			</div>
+			<h1 class="guide-content-h1">주석규칙</h1>
+			<p>주석은 레이아웃 혹은 서비스 구분 등으로 나눠지는 구역에 표시한다. 주석의 닫기표시는 <strong>어두에 //</strong>를 사용하여 주석,영역의 시작과 끝을 표시해준다.</p>
+			<p class="exercise">
+				<strong>&lt;!-- Header --&gt;<br /></strong>
+				&lt;div id="Header"&gt;<br />
+				&lt;/div&gt;<br />
+				<strong>&lt;!-- //Header --&gt;</strong>
+				<span class="guideBalloon">문서상에서 시작과 끝을 한눈에 알수 있도록 주석으로 명시</span>
+			</p>
+		</article>
+		<!-- //주석규칙 -->
+	</div>
+</section>
+
+<footer id="Footer">
+	<p>알바천국 웹표준파트 UI개발 가이드 &copy; 2018</p>
+</footer>
+
+</body>
+</html>

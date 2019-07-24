@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>알바천국 - 웹표준가이드</title>
+<link rel="stylesheet" type="text/css" href="rsc/css/main.css">
+<script type="text/javascript" src="/standard/webguide/guide/2019/rsc/js/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.webguide__header').load('/standard/webguide/guide/2019/rsc/inc/header.html');
+	//$('.webguide__signature-wrap').load('/standard/webguide/guide/2019/rsc/inc/footer.html');
+});
+</script>
+</head>
+<body id="Webguide">
+	<header class="webguide__header"></header>
+	<article class="webguide__contents">
+		<h1 class="hidden">콘텐츠</h1>
+		<section class="webguide__contents-inner webguide__contents-inner--position">
+			<h1 class="hidden">웹표준가이드 접근성 관련 규칙</h1>
+			<a class="accessibility-view-btn" href="/standard/webguide/webacc/main.html" target="_blank">웹접근성 관련 규칙 부록 바로가기</a>
+			<div class="webguide__box">
+				<dl>
+					<dt>1. 접근성이란?</dt>
+					<dd>
+						<ul>
+							<li>월드 와이드 웹(World Wide Web)을 창시한 <em>팀 버너스 리</em>는 웹이란 <em>'장애에 구애 없이 모든 사람들이 손쉽게 정보를 공유할 수 있는 공간이고, 필수적인 요소'</em>라고 정의하며 시작되었다.</li>
+						</ul>
+					</dd>
+				</dl>
+				
+			</div>
+
+			<div class="webguide__box">
+				<dl>
+					<dt>2. 대체텍스트</dt>
+					<dd>
+						<ul>
+							<li>이미지를 볼 수 없는 시각장애인을 위하여, 이미지에 보여지는 정보를 똑같이 제공하여준다.</li>
+							<li>
+								<a href="#" class="banner-view-button" onclick="$('.edit-banner').hide();$(this).next('.edit-banner').show();return false;">대체 텍스트 예제 확인하기</a>
+
+								<div class="edit-banner">
+									<p class="edit-banner__paragraph">
+										<img src="//image.alba.kr/topMain/head_BI.gif" alt="알바선진국 알바천국" /><br>
+										&lt;img src="http://image.alba.kr/topMain/head_BI.gif" alt="" /&gt; (X)<br>
+										&lt;img src="http://image.alba.kr/topMain/head_BI.gif" alt="알바천국" /&gt; (O)<br><br>
+										이미지에 나와있는 대체텍스트를 alt값에 명시해주어 어떠한 이미지인지 알 수 있도록 한다.
+									</p>
+									<p class="edit-banner__detail">
+										<span class="edit-banner__detail-inner">Do you want to close the layer?</span>
+										<a href="#" class="banner-close-button" onclick="$(this).parents('.edit-banner').fadeOut(1200);return false;">[Y]es, I agree</a>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+
+			<div class="webguide__box">
+				<dl>
+					<dt>3. 동영상 자막 제공</dt>
+					<dd>
+						<ul>
+							<li>소리를 들을 수 없는 청각장애인을 위하여 동영상에 자막을 제공한다.<br><br><br><br><br><br></li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</section>
+
+		<section class="webguide__contents-inner webguide__contents-inner--bottom">
+			<h1 class="hidden">웹표준가이드 웹접근성 관련 규칙 - 논리적 입력요소, 건너뛰기, 표 작성</h1>
+			<div class="webguide__box">
+				<dl>
+					<dt>4. 논리적 입력요소</dt>
+					<dd>
+						<ul>
+							<li>정보를 입력하는 폼 요소일 시, 사용자가 어떠한것에 대한 입력란인지 정보를 제공한다.</li>
+							<li>
+								<a href="#" class="banner-view-button" onclick="$('.edit-banner').hide();$(this).next('.edit-banner').show();return false;">논리적 입력요소 예제 확인하기</a>
+
+								<div class="edit-banner">
+									<p class="edit-banner__paragraph">
+										input과 label의 id, for 값을 동일한 이름으로 연결하여 어떠한 입력란인지 정보를 제공한다.<br>
+										단, label이 있을 수 없는 경우 title값으로 대체한다.<br><br>
+										&lt;input type="text" /&gt; &lt;label&gt;제목&lt;/label&gt; (X)<br>
+										&lt;input type="text" <em>id="write_title"</em> /&gt; &lt;label <em>for="write_title"</em>&gt;제목&lt;/label&gt; (O)
+									</p>
+									<p class="edit-banner__detail">
+										<span class="edit-banner__detail-inner">Do you want to close the layer?</span>
+										<a href="#" class="banner-close-button" onclick="$(this).parents('.edit-banner').fadeOut(1200);return false;">[Y]es, I agree</a>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<div class="webguide__box">
+				<dl>
+					<dt>5. 건너뛰기</dt>
+					<dd>
+						<ul>
+							<li>웹페이지는 mark-up의 순서대로 최상단부터 최하단까지 순차적으로 내려오며 정보를 전달한다. 시각장애인의 경우, 스크린리더기가 웹페이지를 읽어주는데, 이 리더기 역시 최상단에서 최하단으로 순차적으로 읽으며 내려오기때문에, 시각장애인은 반복적인 요소들을 계속 들을 수 밖에 없다. 그리하여, 각각의 단락들을 건너뛸 수 있는 건너뛰는 기능을 제공하여 준다.</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+
+			<div class="webguide__box">
+				<dl>
+					<dt>6. 표(table)작성</dt>
+					<dd>
+						<ul>
+							<li>표의 제목과 설명, 해당 셀은 제목인지 설명인지, 열에 해당하는 제목인지, 행에 해당하는 정보인지를 제공하여준다.</li>
+							<li>아래의 예제와 같이 표의 제목과 설명에 해당하는 summary caption 행에 대한 제목인지, 열에 대한 제목인지를 표시하여주는 scope등을 표시하여준다</li>
+							<li>
+								<a href="#" class="banner-view-button" onclick="$('.edit-banner').hide();$(this).next('.edit-banner').show();return false;">표 작성 예제 확인하기</a>
+
+								<div class="edit-banner">
+									<p class="edit-banner__paragraph">
+										&lt;table <em>summary="접근성 설명에 대한 항목, 내용에 대한 표입니다."</em>&gt;<br>
+										&lt;caption <em>summary="접근성 설명 표"</em>&gt;&lt;/caption&gt;<br>
+										&lt;th <em>scope="col"</em>&gt;<br>
+										&lt;th <em>scope="row"</em>&gt;<br>
+										&lt;td <em>scope="col"</em>&gt;<br>
+										&lt;td <em>scope="row"</em>&gt;
+									</p>
+									<p class="edit-banner__detail">
+										<span class="edit-banner__detail-inner">Do you want to close the layer?</span>
+										<a href="#" class="banner-close-button" onclick="$(this).parents('.edit-banner').fadeOut(1200);return false;">[Y]es, I agree</a>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</section>
+		
+		<section class="webguide__contents-inner webguide__contents-inner--bottom">
+			<h1 class="hidden">웹표준가이드 웹접근성 관련 규칙 - 저시력자 배려, 키보드 접근</h1>
+			<div class="webguide__box">
+				<dl>
+					<dt>7. 저시력자 배려</dt>
+					<dd>
+						<ul>
+							<li>꼭 안보여야지만 시각장애가 아니다, 시력이 매우 낮은 저시력자와 색맹인 사용자들은 색깔에도 불편함을 겪는다. 이들을 위하여 명도대비를 지켜 정확한 정보를 보여주어야 한다. 보조도구를 이용하여 명도대비를 체크하고, 디자이너와 협의 후 명도대비를 준수 한 디자인을 사용하여야 한다.</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+
+			<div class="webguide__box">
+				<dl>
+					<dt>8. 키보드 접근</dt>
+					<dd>
+						<ul>
+							<li>신체가 불편한 대부분의 이용자들은 다양한 보조기기를 활용하여 웹을 이용한다. 보조기기를 이용하지만 키보드의 tab, shift+tab, enter 키를 활용하여 다음으로 이동,이전으로 이동,확인 등의 키보드 사용으로 즐기기때문에, 웹사이트를 탐색할 때 키보드만으로도 충분한 운용이 가능하도록 설계하여야 한다.</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</section>
+		<!--footer class="webguide__signature-wrap"></footer-->
+	</article>
+</body>
+</html>

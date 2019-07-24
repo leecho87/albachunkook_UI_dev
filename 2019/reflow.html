@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>알바천국 - 웹표준가이드</title>
+<link rel="stylesheet" type="text/css" href="rsc/css/main.css">
+<script type="text/javascript" src="/standard/webguide/guide/2019/rsc/js/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.webguide__header').load('/standard/webguide/guide/2019/rsc/inc/header.html');
+	//$('.webguide__signature-wrap').load('/standard/webguide/guide/2019/rsc/inc/footer.html');
+});
+</script>
+</head>
+<body id="Webguide">
+	<header class="webguide__header"></header>
+	<article class="webguide__contents">
+		<h1 class="hidden">콘텐츠</h1>
+		<section class="webguide__contents-inner">
+			<h1 class="hidden">웹표준가이드 Reflow 최소화 방법 정의</h1>
+			<div class="webguide__box">
+				<dl>
+					<dt>1. Reflow란?</dt>
+					<dd>
+						<ul>
+							<li>- 문서 내 노드들의 레이아웃, 포지션을 재계산 후 다시 뿌려주므로 Repaint 보다도 더 심각한 퍼포먼스 저하를 유발시키는 프로세스이다. 특정 엘리먼트에 대한 Reflow 발생 시, 페이지에서의 해당 요소는 즉시 Reflow State가 되며 해당 엘리먼트의 자식요소와 부모/조상 요소 역시 레이아웃 계산을 진행한다. Opera에 의하면, 대부분 Reflow는 페이지 전체의 렌더링을 다시 일으킨다고 한다.</li>
+							<li>- Reflow는 퍼포먼스 측면에서 매우 고비용을 발생시키는 프로세스이며, 휴대전화와 같은 저성능 디바이스에서는 특히나 더욱 느린 DOM 스크립팅을 발생시키는 주범이다. 많은 경우에서는 Reflow는 페이지 전체를 다시 한번 레이아웃 시키는 결과를 가져온다.</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+
+			<div class="webguide__box">
+				<dl>
+					<dt>2. 무엇이 Reflow를 유발시키는가?</dt>
+					<dd>
+						<ul>
+							<li>특정 엘리먼트에 스타일 변화가 발생하였을 때, 그 개체가 가진 자식요소에 대한 레이아웃 재정리를 위해 Reflow가 실행된다. 설령 그 변화가 그 자식요소 및 페이지에는 아무 영향을 미치지 않을지라도, 기계는 이를 미리 알고있지 못한다. 따라서 작은 변화에도 자식개체는 물론, 페이지 전체에 Reflow가 실행된다. Mozila에 따르면 다음의 케이스에서 Reflow가 발생한다고 한다.</li>
+							<li>
+								<a href="#" class="banner-view-button" onclick="$('.edit-banner').hide();$(this).next('.edit-banner').show();return false;">Reflow 유발 예제 확인하기</a>
+
+								<div class="edit-banner">
+									<p class="edit-banner__paragraph">
+										1. 윈도우 리사이징<br>
+										2. 폰트의 변화<br>
+										3. 스타일 추가 또는 제거<br>
+										4. 내용 변화(인풋박스에 텍스트 입력 등)<br>
+										5. :hover와 같은 CSS Pseudo Class<br>
+										6. 클래스 Attribute의 동적 변화<br>
+										7. JS를 통한 DOM 동적 변화<br>
+										8. 엘리먼트에 대한 offsetWidth / offsetHeight(화면에서 보여지는 좌표) 계산 시<br>
+										9. 스타일 Attribute 동적 변화
+									</p>
+									<p class="edit-banner__detail">
+										<span class="edit-banner__detail-inner">Do you want to close the layer?</span>
+										<a href="#" class="banner-close-button" onclick="$(this).parents('.edit-banner').fadeOut(1200);return false;">[Y]es, I agree</a>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+
+			<div class="webguide__box">
+				<dl>
+					<dt>3. Reflow 영향을 최소화하는 방법</dt>
+					<dd>
+						<ul>
+							<li>
+								1. 클래스 변화에 따른 스타일 변화를 원할 경우, 최대한 DOM 구조 상 끝단에 위치한 노드에 주어라.<br>
+								2. 인라인 스타일을 최대한 배제하라.<br>
+								3. 애니메이션이 들어간 엘리먼트는 가급적 position:fixed 또는 position:absolute로 지정.<br>
+								4. 퀄리티와 퍼포먼스 사이에서 타협하라.<br>
+								5. 테이블 레이아웃을 피하라.<br>
+								6. IE의 경우, CSS에서의 JS표현식을 피하라.<br>
+								7. JS를 통해 스타일변화를 주어야 할 경우, 가급적 한번에 처리하라.<br>
+								8. CSS Rules는 필요한 만큼 정리하라.<br>
+								9. position:relative 사용 시 주의하자.
+							</li>
+							<li>
+								<a href="#" class="banner-view-button" onclick="$('.edit-banner').hide();$(this).next('.edit-banner').show();return false;">Reflow 최소화 하는 방법 예제 확인하기</a>
+
+								<div class="edit-banner">
+									<p class="edit-banner__paragraph">
+										<em>1. 클래스 변화에 따른 스타일 변화를 원할 경우, 최대한 DOM 구조 상 끝단에 위치한 노드에 주어라.</em><br><br>
+										클래스 변화로 인한 Reflow는 물론 피할 수 없겠지만, 그 효과는 줄일 수 있다. DOM 트리에서 가급적 말단에 위치한 노드에 클래스 변화를 줄 경우, 이는 Reflow의 행동반경을 전체 페이지가 아닌 일부 노드들로 제한 할 수 있다. 따라서 전체 페이지를 감싸는 wrapper에 클래스를 수정하는 행위는 꼭 피해야한다. 또한 OOCSS 방식을 통해 클래스 변화가 발생할 경우, 특정 엘리먼트에 대해 상당히 많은 클래스를 적용시키는 것 같지만, 실제로는 Reflow의 영향을 최소화함으로써 퍼포먼스적인 측면에서 큰 이득이 발생한다.<br><br>
+
+										<em>2. 인라인 스타일을 최대한 배제하라.</em><br><br>
+										DOM은 매우 느린 구조체이다. 게다가 인라인상에 스타일이 주어진 경우, Reflow는 페이지 전체에 걸쳐 수차례 발생하게 된다. 만일 인라인 스타일이 없을 경우, 외부 스타일 클래스의 조합으로 단 한번만 Reflow를 발생시킨다.<br></br>
+
+										<em>3. 애니메이션이 들어간 엘리먼트는 가급적 position:fixed 또는 position:absolute로 지정.</em><br><br>
+										일반적으로 JS(특히 jQuery)나 CSS3로 width/height 또는 위치 이동을 구현한 애니메이션은 거의 초단위로 상당한 Reflow를 불러 일으킨다. 이러한 경우에 해당 개체의 position 속성을 fixed 또는 absolute로 주게 되면 다른 요소들의 레이아웃에 영향을 끼치지 않으므로 페이지 전체의 Reflow 대신 해당 애니메이션 요소의 Repaint만을 유발한다. 이것은 비용적인 측면에서 매우 효율적인 방법이다<br><br>
+
+										<em>4. 퀄리티와 퍼포먼스 사이에서 타협하라.</em><br><br>
+										한 time에 1px을 움직이는 애니메이션 A와 한 time에 3px를 움직이는 애니메이션 B가 있다고 할 때, 애니메이션의 계산과 페이지 Reflow 계산이 동시다발적으로 발생함으로써 CPU 퍼포먼스 비용이 발생하는데, A가 B에 비해 더욱 큰 비용이 발생한다. 속도가 빠른 디바이스에서는 둘다 비슷하게 보이지만, 속도가 느린 (휴대전화와 같은) 디바이스에서는 그 차이가 눈에 띌 수 있다.<br><br>
+
+										<em>5. 테이블 레이아웃을 피하라.</em><br><br>
+										테이블로 구성된 페이지 레이아웃은 점진적 페이지 렌더링이 적용되지 않으며, 모두 로드되고 계산 된 후에 화면에 뿌려진다. 더군다나 Mozila에 따르면 테이블 레이아웃에서는 아주 작은 변화마저도 해당 테이블 전체 모든 노드에 대한 Reflow를 발생시칸다고 한다. 또한 YUI data table 위젯의 개발자인 Jenny Donnelly에 의하면, 레이아웃 용도가 아닌 데이터 표시 용도의 올바른 테이블이라 할지라도 해당 테이블에 table-layout:fixed 속성을 주는 것이 디폴트 값인 auto에 비해 성능면에서 더 좋다고 한다.<br></br>
+										
+										<em>6. IE의 경우, CSS에서의 JS표현식을 피하라.</em><br><br>
+										소개된지 오래된 규칙이지만 매우 효과적인 규칙이다. 이 CSS 현식의 비용이 매우 높은 이유는, 문서 전체 또는 문서 중 일부가 Reflow될 때마다 표현식이 다시 계산되기 때문이다. 이는 결국 애니메이션과 같은 변화에 의해 Reflow가 발생했을 때, 경우에 따라 1초당 수천, 수만번의 표현식 계산이 진행될 수 있다는 것을 의미한다. 때문에 CSS 표현식은 반드시 피해야한다.<br></br>
+
+										<em>7. JS를 통해 스타일변화를 주어야 할 경우, 가급적 한번에 처리하라.</em><br><br>
+										특정 요소에 스타일변화를 주어야 할 경우 다음과 같이 시도해볼 수 있다.<br>
+										var toChange = document.getElementById('elem');<br>
+										toChange.style.background = '#333';<br>
+										toChange.style.color = '#fff';<br>
+										toChange.style.border = '1px solid #ccc';<br><br>
+										
+										이러한 접근은 여러번 중복된 Reflow와 Repaint를 유발시킨다.<br>
+										때문에 위와 같은 방법보다는 다음과 같은 방법으로, 단 한번의 변화만을 발생시키는 것이 더욱 효과적이다<br><br>
+
+										/* CSS */<br>
+										#elem {border:1px solid #000;color:#000;background:#ddd}<br>
+										.highlight {border-color:#00f;color:#fff;background:#333}<br><br>
+										
+										/* js */<br>
+										document.getElementById('elem').className = 'highlight';<br><br>
+
+										<em>8. CSS Rules는 필요한 만큼 정리하라.</em><br><br>
+										Reflow 자체보다도, Reflow가 유발시키는 CSS Recalculation에 필요한 내용이다. CSS의 Rule 매칭 프로세스는, 가장 우측의 핵심 선택자에서 좌측으로 흐른다. 이 과정은 더이상 매치시킬 Rule이 없거나 잘못된 Rule이 튀어나올 때까지 계속 매칭시키며 진행된다. 만일 해당 CSS의 특별성(specialty)이 확보되는 선에서, 가급적 딱 필요한만큼만 사용한다면 퍼포먼스 측면에서의 극적인 향상이 발생하게 된다. (즉, 룰이 적을수록 비용절감) 설령 .btn_more라는 클래스가 list_service 내에 쓰이는 유일한 요소일 경우, 아래와 같은 두가지 예가 발생할 수 있다.<br></br>
+										ex 1.)<br>
+										.section_service .list_service li .box_name .btn_more {display:block;width:100px;height:30px}<br><br>
+										
+										ex 2.)<br>
+										.section_service .list_service .btn_more {display:block;width:100px;height:30px}<br><br>
+										
+										가정 상 둘 다 .btn_more의 specialty가 유효한 CSS임에도 불구하고, 첫번째 예처럼 쓰는 경우는 '코드 가독성'과 같은 이유에서 일 것이다. 유지보수의 측면에서 보자면 물론 가독성도 중요한 부분이나, 위의 첫번째 예와 같이 5단계에 걸쳐 필요이상의 규칙들을 작성해놓을 경우 퍼포먼스 하락을 가져올 수 있다. 더군다나 이러한 CSS 코드들이 5~10라인이 아닌, 500~1000라인쯤 될 경우 퍼포먼스에 상당한 영향을 미치게 된다. 때문에 두번째 에와 같이 딱 필요한 선에서 핵심만을 짚는 CSS Rule 선언이 필요하며, 코드 가독성을 위해서라면 차라리 해당 분류 묶음에 CSS 주석처리를 하는 것이 효과적이다. (하위선택자는 가급적 적을수록 좋다)<br><br>
+
+										<em>9. position:relative 사용 시 주의하자.</em><br><br>
+										페이지를 새로 열거나 Reflow가 발생되어 CSS Calculation이 발생할 경우, Box model Calculation → Normal Flow 순서로 계산이 진행된다. (Normal flow는 Layout 또는 Reflow라 불리는 과정에 속하는 일부임.) 일반적인 경우, 엘리먼트 들은 margin, border, padding, content(width, height) 등 Box model을 먼저 계산한 후 Normal flow 상태의 레이아웃에 배치된다. (다른말로 선형적 배치)
+									</p>
+									<p class="edit-banner__detail">
+										<span class="edit-banner__detail-inner">Do you want to close the layer?</span>
+										<a href="#" class="banner-close-button" onclick="$(this).parents('.edit-banner').fadeOut(1200);return false;">[Y]es, I agree</a>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</section>
+
+		<!--footer class="webguide__signature-wrap"></footer-->
+	</article>
+</body>
+</html>

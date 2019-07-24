@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta chasret="euc-kr" />
+<!--meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" /-->
+<title>알바천국 - 웹표준가이드</title>
+<link rel="stylesheet" type="text/css" href="./rsc/css/standard.css" />
+</head>
+
+<body id="CssRule">
+<header>
+	<div id="Header">
+		<div class="header-intro"><img src="./images/mini_bi.png" alt="" />웹표준가이드 - <span class="location">CSS 규칙</span></div>
+		<div class="header-inner">
+			<h1 class="header-inner-h1">Web Coding Guideline</h1>
+			<nav class="header-inner-menu">
+				<ul class="header-inner-menuList">
+					<li><a href="./index.html">개요</a></li>
+					<li><a href="./rules.html">명명규칙</a></li>
+					<li><a href="./html.html">HTML 규칙</a></li>
+					<li><a href="./css.html">CSS 규칙</a></li>
+					<li><a href="./scss.html" class="on">SASS 규칙</a></li>
+					<li><a href="./accessibility.html">접근성 관련 규칙</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
+
+<section id="Section">
+	<div id="CssRuleArea">
+		<!-- sass란? -->
+		<article class="guide-contentBox">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">1</span>
+			</div>
+			<h1 class="guide-content-h1">sass란?</h1>
+			<p>css의 전처리기로써, css에서 불가능한 mixin,include,extend,연산 등이 가능하여 css문서를 유연하고 빠르게 할 수 있도록 도와주는 <strong>전처리기(pre-process)</strong>이다.</p>
+		</article>
+		<!-- //sass란? -->
+
+		<!--  sass를 써야하는 이유 -->
+		<article class="guide-contentBox">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">2</span>
+			</div>
+			<h1 class="guide-content-h1">sass를 써야하는 이유</h1>
+			<p>구성원들끼리의 규칙(컨벤션)을 통해 효율적인 코드 작성 가능</p>
+			<p>sass 문법으로 작성된 부분에 대한 css selector의 "시각적인 상속관계 파악" 가능</p>
+			<p>css에서의 변수 및 함수 사용 가능</p>
+			<p>웹 사이트의 용량이 방대해짐에 따른 코드의 효율적인 관리가 필요</p>
+		</article>
+		<!-- //sass를 써야하는 이유 -->
+
+		<!--  특징 -->
+		<article class="guide-contentBox">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">3</span>
+			</div>
+			<h1 class="guide-content-h1">특징</h1>
+			<p>Less보다 더 오래된 전처리기</p>
+			<p>해외 뿐만이 아닌 "국내에서도 대중화" 되어있는 전처리기</p>
+			<p>"Ruby" 언어를 기반으로 동작</p>
+			<p>기존 문법과의 호환성(if, each, for, while)</p>
+		</article>
+		<!-- //특징 -->
+		
+		<!--  장점 -->
+		<article class="guide-contentBox">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">4</span>
+			</div>
+			<h1 class="guide-content-h1">장점</h1>
+			<p>변수 및 함수의 사용으로 인한 효율적인 코드 "작성 + 재사용" 가능</p>
+			<p>해외 뿐만이 아닌 "국내에서도 대중화" 되어있는 전처리기</p>
+			<p class="exercise">
+				<strong style="display:block">변수 선언</strong>
+				$red : #f00;
+			</p>
+			<p class="exercise">
+				<strong style="display:block">함수 선언</strong>
+				@function test($width){<br />
+				&nbsp;&nbsp;&nbsp;@debug$width; //함수를 실행할 때 받아온 인자값<br />
+				&nbsp;&nbsp;&nbsp;$sum: $width / 4 + "%";<br />
+				&nbsp;&nbsp;&nbsp;@debug $sum; //받아온 인자값을 기준으로 연산을 한 후 결과값<br />
+				&nbsp;&nbsp;&nbsp;@return $sum; //100을 4로 나눈 값을 반환하므로 결과값은 25%가 된다<br />
+				}
+			</p>
+			<p class="exercise">
+				<strong style="display:block">함수 실행</strong>
+				.hello {<br />
+				&nbsp;&nbsp;&nbsp;width: test(100);<br />
+				}
+			</p>
+			<p>코드의 중복을 줄일 수 있다.</p>
+			<p class="exercise">
+				<strong style="display:block">기존 css 작성 방식</strong>
+				.hello {display: block;}<br />
+				.hello em {color: #f00;}
+			</p>
+			<p class="exercise">
+				<strong style="display:block">sass에서의 작성 방식(*.scss)</strong>
+				.hello {<br />
+				&nbsp;&nbsp;&nbsp;display: block;<br /><br />
+				&nbsp;&nbsp;&nbsp;em {<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: #f00;<br />
+				&nbsp;&nbsp;&nbsp;}<br />
+				}
+			</p>
+			<p class="exercise">
+				<strong style="display:block">sass에서 compile 된 후 css 파일</strong>
+				.hello {display: block;}<br />
+				.hello em {color: #f00;}
+			</p>
+			<p>다음 순서와 같이 compile 된다.</p>
+			<p>1. *.scss 파일에서 sass 문법 작성</p>
+			<p>2. compile</p>
+			<p>3. css 반환</p>
+		</article>
+		<!-- //장점 -->
+
+		<!-- 작업구성 -->
+		<article class="guide-contentBox">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">5</span>
+			</div>
+			<h1 class="guide-content-h1">작업구성</h1>
+			<p>현재 root안에 front-workspace 라는, front단 작업자들의 공간을 따로 만들었으며, 해당 폴더 안에 scss에서 작업을 하게 되며, gulp 명령어를 통하여 compile 하여 css를 완성한다.<br /><span>(파일명 앞에 _를 붙이는 이유는 sass에서 compile을 하지 않기 때문이다.)</span></p>
+			<p class="exercise">
+				<span>root</span><br />
+				<span>css</span><br />
+				<span style="display:inline-block;text-indent:10px">ㄴ 0_work</span><br />
+				<span style="display:inline-block;text-indent:30px">ㄴ stage</span><br />
+				<span style="display:inline-block;text-indent:30px">ㄴ deploy</span><br />
+				<span><strong>front-workspace</strong></span><br />
+				<span style="display:inline-block;text-indent:10px">ㄴ scss</span><br />
+				<span style="display:inline-block;text-indent:30px">ㄴ main.scss</span><br />
+				<span style="display:inline-block;text-indent:30px">ㄴ main</span><br />
+				<span style="display:inline-block;text-indent:50px">ㄴ _mainSlide.scss</span><br />
+				<span>rsc</span><br />
+				<span>package.json</span><br />
+				<span>package-lock.json</span>
+			</p>
+		</article>
+		<!-- //작업구성 -->
+
+		<!-- mixin, include -->
+		<article class="guide-contentBox">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">6</span>
+			</div>
+			<h1 class="guide-content-h1">@mixin, include</h1>
+			<p>@mixin 과 include 방식으로 작업하며 css파일명과 폴더명을 똑같이 만들고 preset, util로 구분하여 정의한다.</p>
+			<p>@mixin은 변수로써, @mixin variable(a,b,c){ ... } 방식으로 선언한다.</p>
+			<p>선언한 값은 .header-wrapper { @include variable } 로 적용한다.</p>
+			<p class="exercise">
+				<span>root</span><br />
+				<span>css</span><br />
+				<span style="display:inline-block;text-indent:10px">ㄴ 0_work</span><br />
+				<span style="display:inline-block;text-indent:30px">ㄴ stage</span><br />
+				<span style="display:inline-block;text-indent:30px">ㄴ deploy</span><br />
+				<span>front-workspace</span><br />
+				<span style="display:inline-block;text-indent:10px">ㄴ scss</span><br />
+				<span style="display:inline-block;text-indent:30px"><strong>ㄴ job.scss</strong></span><br />
+				<span style="display:inline-block;text-indent:30px"><strong>ㄴ job</strong></span><br />
+				<span style="display:inline-block;text-indent:50px"><strong>ㄴ _jobDetail.scss</strong></span><br />
+				<span>rsc</span><br />
+				<span>package.json</span><br />
+				<span>package-lock.json</span>
+			</p>
+		</article>
+		<!-- //mixin, include -->
+
+		<!-- task 실행 -->
+		<article class="guide-contentBox">
+			<div class="guide-orderview">
+				<span class="guide-orderview-line"></span><span class="guide-orderview-num">7</span>
+			</div>
+			<h1 class="guide-content-h1">task 실행</h1>
+			<p>sass는 gulp-sass를 사용하며, task에 대한 자세한 정보는 style.task.js 와 gulp.config.js를 참조하면 된다.</p>
+			<p class="exercise">
+				현재는 4개의 task로 구성하였으며,<br />style:clean -> CSS Path의 파일을 삭제한다.<br />style:work -> 테스트서버 css 파일을 compile 한다.<br />style:deploy -> 압축버전의 css을 compile한다<br /> style:deploy-override -> 배포폴더를 만들었으나 배포를 안했을 경우, 덮어씌운다.
+			</p>
+		</article>
+		<!-- //task 실행 -->
+
+	</div>
+</section>
+
+<footer id="Footer">
+	<p>알바천국 웹표준파트 UI개발 가이드 &copy; 2018</p>
+</footer>
+
+</body>
+</html>

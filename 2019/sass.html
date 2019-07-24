@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>알바천국 - 웹표준가이드</title>
+<link rel="stylesheet" type="text/css" href="rsc/css/main.css">
+<script type="text/javascript" src="/standard/webguide/guide/2019/rsc/js/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.webguide__header').load('/standard/webguide/guide/2019/rsc/inc/header.html');
+	//$('.webguide__signature-wrap').load('/standard/webguide/guide/2019/rsc/inc/footer.html');
+});
+</script>
+</head>
+<body id="Webguide">
+	<header class="webguide__header"></header>
+	<article class="webguide__contents">
+		<h1 class="hidden">콘텐츠</h1>
+		<section class="webguide__contents-inner">
+			<h1 class="hidden">웹표준가이드 SASS 규칙</h1>
+			<div class="webguide__box">
+				<dl>
+					<dt>1. SASS란?</dt>
+					<dd>
+						<ul>
+							<li>css의 전처리기로써, css에서 불가능한 mixin,include,extend,연산 등이 가능하여 css문서를 유연하고 빠르게 할 수 있도록 도와주는<br> <em>전처리기(pre-process)</em>이다.</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+
+			<div class="webguide__box">
+				<dl>
+					<dt>2. SASS를 써야하는 이유</dt>
+					<dd>
+						<ul>
+							<li>- 구성원들끼리의 규칙(컨벤션)을 통해 효율적인 코드 작성 가능</li>
+							<li>- sass 문법으로 작성된 부분에 대한 css selector의<br> <em>시각적인 상속관계 파악</em> 가능</li>
+							<li>- css에서의 변수 및 함수 사용 가능</li>
+							<li>- 웹 사이트의 용량이 방대해짐에 따른 코드의 효율적인 관리가 필요</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</section>
+
+		<section class="webguide__contents-inner webguide__contents-inner--bottom">
+			<h1 class="hidden">웹표준가이드 SASS 규칙 - 특징, 장점</h1>
+			<div class="webguide__box">
+				<dl>
+					<dt>3. 특징</dt>
+					<dd>
+						<ul>
+							<li>- Less보다 더 오래된 전처리기</li>
+							<li>- 해외 뿐만이 아닌 "국내에서도 대중화" 되어있는 전처리기</li>
+							<li>- "Ruby" 언어를 기반으로 동작</li>
+							<li>- 기존 문법과의 호환성(if, each, for, while)</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<div class="webguide__box">
+				<dl>
+					<dt>4. 장점</dt>
+					<dd>
+						<ul>
+							<li>변수 및 함수의 사용으로 인한 효율적인 코드 "작성 + 재사용" 가능</li>
+							<li>해외 뿐만이 아닌 "국내에서도 대중화" 되어있는 전처리기</li>
+							<li>
+								<a href="#" class="banner-view-button" onclick="$('.edit-banner').hide();$(this).next('.edit-banner').show();return false;">변수 선언 예제 확인하기</a>
+
+								<div class="edit-banner">
+									<p class="edit-banner__paragraph">
+										/* 변수 선언 */<br><br>
+										$red : #f00;
+									</p>
+									<p class="edit-banner__detail">
+										<span class="edit-banner__detail-inner">Do you want to close the layer?</span>
+										<a href="#" class="banner-close-button" onclick="$(this).parents('.edit-banner').fadeOut(1200);return false;">[Y]es, I agree</a>
+									</p>
+								</div>
+							</li>
+							<li>
+								<a href="#" class="banner-view-button" onclick="$('.edit-banner').hide();$(this).next('.edit-banner').show();return false;">함수 선언 예제 확인하기</a>
+
+								<div class="edit-banner">
+									<p class="edit-banner__paragraph">
+										/* 함수 선언 */<br>
+										@function test($width){<br>
+										&nbsp;&nbsp;&nbsp;@debug$width; //함수를 실행할 때 받아온 인자값<br>
+										&nbsp;&nbsp;&nbsp;$sum: $width / 4 + "%";<br>
+										&nbsp;&nbsp;&nbsp;@debug $sum; //받아온 인자값을 기준으로 연산을 한 후 결과값<br>
+										&nbsp;&nbsp;&nbsp;@return $sum; //100을 4로 나눈 값을 반환하므로 결과값은 25%가 된다<br>
+										}
+									</p>
+									<p class="edit-banner__detail">
+										<span class="edit-banner__detail-inner">Do you want to close the layer?</span>
+										<a href="#" class="banner-close-button" onclick="$(this).parents('.edit-banner').fadeOut(1200);return false;">[Y]es, I agree</a>
+									</p>
+								</div>
+							</li>
+							<li>
+								<a href="#" class="banner-view-button" onclick="$('.edit-banner').hide();$(this).next('.edit-banner').show();return false;">함수 실행 예제 확인하기</a>
+
+								<div class="edit-banner">
+									<p class="edit-banner__paragraph">
+										.hello {<br>
+										&nbsp;&nbsp;&nbsp;width: test(100);<br>
+										}
+									</p>
+									<p class="edit-banner__detail">
+										<span class="edit-banner__detail-inner">Do you want to close the layer?</span>
+										<a href="#" class="banner-close-button" onclick="$(this).parents('.edit-banner').fadeOut(1200);return false;">[Y]es, I agree</a>
+									</p>
+								</div>
+							</li>
+							<li>
+								<a href="#" class="banner-view-button" onclick="$('.edit-banner').hide();$(this).next('.edit-banner').show();return false;">기존 CSS 작성 방식 → SASS 작성 방식(*.scss)</a>
+
+								<div class="edit-banner">
+									<p class="edit-banner__paragraph">
+										/* 기존 css 작성 방식 */<br>
+										.hello {display: block;}<br>
+										.hello em {color: #f00;}<br><br>
+
+										/* sass에서의 작성 방식(*.scss) */<br>
+										.hello {<br>
+										&nbsp;&nbsp;&nbsp;display: block;<br><br>
+
+										&nbsp;&nbsp;&nbsp;em {<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: #f00;<br>
+										&nbsp;&nbsp;&nbsp;}<br>
+										}
+									</p>
+									<p class="edit-banner__detail">
+										<span class="edit-banner__detail-inner">Do you want to close the layer?</span>
+										<a href="#" class="banner-close-button" onclick="$(this).parents('.edit-banner').fadeOut(1200);return false;">[Y]es, I agree</a>
+									</p>
+								</div>
+							</li>
+							<li>
+								<a href="#" class="banner-view-button" onclick="$('.edit-banner').hide();$(this).next('.edit-banner').show();return false;">SASS에서 COMPILE 된 후 CSS 파일</a>
+
+								<div class="edit-banner">
+									<p class="edit-banner__paragraph">
+										.hello {display: block;}<br>
+										.hello em {color: #f00;}<br><br>
+										
+										다음 순서와 같이 compile 된다.<br>
+										1. *.scss 파일에서 sass 문법 작성<br>
+										2. compile<br>
+										3. css 반환
+									</p>
+									<p class="edit-banner__detail">
+										<span class="edit-banner__detail-inner">Do you want to close the layer?</span>
+										<a href="#" class="banner-close-button" onclick="$(this).parents('.edit-banner').fadeOut(1200);return false;">[Y]es, I agree</a>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</section>
+
+		<section class="webguide__contents-inner webguide__contents-inner--bottom">
+			<h1 class="hidden">웹표준가이드 SASS 규칙 - 작업구성, mixin, include, task 실행</h1>
+			<div class="webguide__box">
+				<dl>
+					<dt>5. 작업구성</dt>
+					<dd>
+						<ul>
+							<li>현재 root안에 front-workspace 라는, front단 작업자들의 공간을 따로 만들었으며, 해당 폴더 안에 scss에서 작업을 하게 되며, gulp 명령어를 통하여 compile 하여 css를 완성한다. (파일명 앞에 _를 붙이는 이유는 sass에서 compile을 하지 않기 때문이다.)</li>
+							<li>
+								<a href="#" class="banner-view-button" onclick="$('.edit-banner').hide();$(this).next('.edit-banner').show();return false;">예제 확인하기</a>
+
+								<div class="edit-banner">
+									<p class="edit-banner__paragraph">
+										root<br>
+										css<br>
+										&nbsp;&nbsp;&nbsp;ㄴ 0_work<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ㄴ stage<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ㄴ deploy<br>
+										<em>front-workspace</em><br>
+										&nbsp;&nbsp;&nbsp;ㄴ scss<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ㄴ main.scss<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ㄴ main<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ㄴ _mainSlide.scss<br>
+										rsc<br>
+										package.json<br>
+										package-lock.json
+									</p>
+									<p class="edit-banner__detail">
+										<span class="edit-banner__detail-inner">Do you want to close the layer?</span>
+										<a href="#" class="banner-close-button" onclick="$(this).parents('.edit-banner').fadeOut(1200);return false;">[Y]es, I agree</a>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<div class="webguide__box">
+				<dl>
+					<dt>6. @mixin, include</dt>
+					<dd>
+						<ul>
+							<li>- @mixin 과 include 방식으로 작업하며 css파일명과 폴더명을 똑같이 만들고 preset, util로 구분하여 정의한다.</li>
+							<li>- @mixin은 변수로써, @mixin variable(a,b,c){ ... } 방식으로 선언한다.</li>
+							<li>- 선언한 값은 .header-wrapper { @include variable } 로 적용한다.</li>
+							<li>- 기존 문법과의 호환성(if, each, for, while)</li>
+							<li>
+								<a href="#" class="banner-view-button" onclick="$('.edit-banner').hide();$(this).next('.edit-banner').show();return false;">예제 확인하기</a>
+
+								<div class="edit-banner">
+									<p class="edit-banner__paragraph">
+										root<br>
+										css<br>
+										&nbsp;&nbsp;&nbsp;ㄴ 0_work<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ㄴ stage<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ㄴ deploy<br>
+										front-workspace<br>
+										&nbsp;&nbsp;&nbsp;ㄴ scss<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>ㄴ job.scss</em><br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>ㄴ job</em><br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>ㄴ _jobDetail.scss</em><br>
+										rsc<br>
+										package.json<br>
+										package-lock.json
+									</p>
+									<p class="edit-banner__detail">
+										<span class="edit-banner__detail-inner">Do you want to close the layer?</span>
+										<a href="#" class="banner-close-button" onclick="$(this).parents('.edit-banner').fadeOut(1200);return false;">[Y]es, I agree</a>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<div class="webguide__box">
+				<dl>
+					<dt>7. task 실행</dt>
+					<dd>
+						<ul>
+							<li>- sass는 gulp-sass를 사용하며, task에 대한 자세한 정보는 style.task.js 와 gulp.config.js를 참조하면 된다.</li>
+							<li>
+								<a href="#" class="banner-view-button" onclick="$('.edit-banner').hide();$(this).next('.edit-banner').show();return false;">자세한 설명 보기</a>
+
+								<div class="edit-banner">
+									<p class="edit-banner__paragraph">
+										현재는 4개의 task로 구성하였으며,<br>
+										style:clean -> CSS Path의 파일을 삭제한다.<br>
+										style:work -> 테스트서버 css 파일을 compile 한다.<br>
+										style:deploy -> 압축버전의 css을 compile한다<br>
+										style:deploy-override -> 배포폴더를 만들었으나 배포를 안했을 경우, 덮어씌운다.
+									</p>
+									<p class="edit-banner__detail">
+										<span class="edit-banner__detail-inner">Do you want to close the layer?</span>
+										<a href="#" class="banner-close-button" onclick="$(this).parents('.edit-banner').fadeOut(1200);return false;">[Y]es, I agree</a>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</section>
+
+		<!--footer class="webguide__signature-wrap"></footer-->
+	</article>
+</body>
+</html>
